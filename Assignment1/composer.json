@@ -1,0 +1,11 @@
+{
+    "name": "student/karl",
+    "description": "inlamningsuppgift_1",
+    "type": "project",
+    "require": {
+        "guzzlehttp/guzzle": "^6.2",
+        "monolog/monolog": "^1.22"
+    },
+    "license": "BSD",
+    "minimum-stability": "stable"
+}
