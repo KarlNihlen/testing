@@ -1,0 +1,24 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "title": "SAMSUNG G950 Galaxy S8",
+            "price": 7990
+        },
+        {
+            "id": 2,
+            "title": "APPLE iPhone 7 32 GB",
+            "price": 6989
+        },
+        {
+            "id": 3,
+            "title": "ASUS ZenFone 3 Max 32 GB",
+            "price": 2990
+        },
+        {
+            "id": 4,
+            "title": "HUAWEI P8 Lite",
+            "price": 1490
+        }
+    ]
+}
