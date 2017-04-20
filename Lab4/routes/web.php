@@ -14,3 +14,12 @@
 $app->get('/', function () use ($app) {
     return $app->version();
 });
+
+$app->get('reviews', 'ReviewsController@index');
+$app->get('reviews/{id}', 'ReviewsController@show');
+
+$app->get('/products', 'ProductsController@index');
+$app->get('/products/{id}', 'ProductsController@show');
+
+$app->get('stores', 'StoresController@index');
+$app->get('stores/{id}', 'StoresController@show');
