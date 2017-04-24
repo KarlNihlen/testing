@@ -12,19 +12,23 @@ class storesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('stores')->insert([
-        [
-          'name' => str_random(10),
-          'city' => str_random(10),
-        ],
-        [
-          'name' => str_random(10),
-          'city' => str_random(10),
-        ],
-        [
-          'name' => str_random(10),
-          'city' => str_random(10),
-        ]
-      ]);
+      DB::table('stores')->insert([
+  [
+      "name" => "Elgiganten",
+      "city" => "Lund"
+  ],
+  [
+      "name" => "Media Markt",
+      "city" => "Malmö"
+  ],
+  [
+      "name" => "Expert",
+      "city" => "Staffanstorp"
+  ],
+  [
+      "name" => "Siba",
+      "city" => "Helsingborg"
+  ]
+]);
     }
 }

@@ -12,22 +12,55 @@ class reviewsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('reviews')->insert([
-        [
-          'product_id' => 1,
-          'rating' => 4,
-          'comment' => "riktigt sick",
-        ],
-        [
-          'product_id' => 2,
-          'rating' => 3,
-          'comment' => "decent",
-        ],
-        [
-          'product_id' => 3,
-          'rating' => 1,
-          'comment' => "samst",
-        ]
-      ]);
+      DB::table('reviews')->insert([
+  [
+      "name" => "Anton",
+      "comment" => "Superbra telefon, lite gammal bara",
+      "grade" => 5,
+      "product_id" => 1
+  ],
+  [
+      "name" => "Johan",
+      "comment" => "Äpplen är goda!",
+      "grade" => 3,
+      "product_id" => 1
+  ],
+  [
+      "name" => "Johan",
+      "comment" => "Den är helt okej!",
+      "grade" => 3,
+      "product_id" => 2
+  ],
+  [
+      "name" => "Anton",
+      "comment" => "Bra, men har möjlighet att förbättras!",
+      "grade" => 4,
+      "product_id" => 2
+  ],
+  [
+      "name" => "Anton",
+      "comment" => "LG förvånar med en såhär bra telefon!",
+      "grade" => 5,
+      "product_id" => 3
+  ],
+  [
+      "name" => "Johan",
+      "comment" => "Bra med många alternativ på Android-marknaden",
+      "grade" => 4,
+      "product_id" => 3
+  ],
+  [
+      "name" => "Johan",
+      "comment" => "Gör de fortfarande Windows-telefoner? Behöver blir bättre!",
+      "grade" => 3,
+      "product_id" => 4
+  ],
+  [
+      "name" => "Anton",
+      "comment" => "Klart bättre än förväntat!",
+      "grade" => 4,
+      "product_id" => 4
+  ]
+]);
     }
 }
