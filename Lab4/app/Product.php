@@ -3,12 +3,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
-  public function review(){
-
+  public function reviews(){
       return $this->hasMany('App\Review');
   }
 
-  public function store(){
+  public function stores(){
     return $this->belongsToMany('App\Store');
   }
 }

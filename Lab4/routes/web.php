@@ -20,6 +20,7 @@ $app->get('reviews/{id}', 'ReviewsController@show');
 
 $app->get('/products', 'ProductsController@index');
 $app->get('/products/{id}', 'ProductsController@show');
+$app->post('/products', 'ProductsController@store');
 
 $app->get('stores', 'StoresController@index');
 $app->get('stores/{id}', 'StoresController@show');
