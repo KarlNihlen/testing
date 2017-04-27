@@ -37,5 +37,6 @@ class ProductsController extends Controller
           "store_id" => $store,
         ]);
       }
+      return response()->json(["success" => true]);
     }
 }
