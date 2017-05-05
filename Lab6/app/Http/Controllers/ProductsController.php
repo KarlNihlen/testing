@@ -7,6 +7,11 @@ use App\Product;
 
 class ProductsController extends Controller
 {
+
+  public function __construct()
+  {
+    $this->middleware('auth', ['except' =>['index', 'show']]);
+  }
     /**
      * Display a listing of the resource.
      *
@@ -14,12 +19,11 @@ class ProductsController extends Controller
      */
     public function index()
     {
-
-        $products = Product::all();
-        //dd($products);
-        return view("index", [
-          "products" => $products
-        ]);
+      $products = Product::all();
+      //dd($products);
+      return view("index", [
+        "products" => $products
+      ]);
     }
 
     /**
@@ -29,6 +33,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
+
         return view("create");
     }
 
@@ -40,15 +45,15 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product;
-        $product->title = $request->get("title");
-        $product->brand = $request->get("brand");
-        $product->image = $request->get("image");
-        $product->description = $request->get("description");
-        $product->price = $request->get("price");
-        $product->save();
+      $product = new Product;
+      $product->title = $request->get("title");
+      $product->brand = $request->get("brand");
+      $product->image = $request->get("image");
+      $product->description = $request->get("description");
+      $product->price = $request->get("price");
+      $product->save();
 
-        return redirect()->action('ProductsController@index')->with('status', 'Produkten är sparad!');
+      return redirect()->action('ProductsController@index')->with('status', 'Produkten är sparad!');
     }
 
     /**
@@ -59,10 +64,10 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        return view("show", [
-          "product" => $product
-        ]);
+      $product = Product::find($id);
+      return view("show", [
+        "product" => $product
+      ]);
     }
 
     /**
@@ -73,8 +78,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
-        return View::make('product.edit')->with('product', $product);
+        //
     }
 
     /**
@@ -86,7 +90,7 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        //
     }
 
     /**
@@ -97,7 +101,7 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        Product::destroy($id);
-        return redirect()->action('ProductsController@index')->with('status', 'Produkten är raderad!');
+      Product::destroy($id);
+      return redirect()->action('ProductsController@index')->with('status', 'Produkten är raderad xD!');
     }
 }
