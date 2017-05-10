@@ -20,7 +20,7 @@ class ProductsController extends Controller
     public function index()
     {
       $products = Product::all();
-      //dd($products);
+
       return view("index", [
         "products" => $products
       ]);
@@ -33,7 +33,6 @@ class ProductsController extends Controller
      */
     public function create()
     {
-
         return view("create");
     }
 
@@ -52,7 +51,6 @@ class ProductsController extends Controller
       $product->description = $request->get("description");
       $product->price = $request->get("price");
       $product->save();
-
       return redirect()->action('ProductsController@index')->with('status', 'Produkten är sparad!');
     }
 
@@ -65,9 +63,13 @@ class ProductsController extends Controller
     public function show($id)
     {
       $product = Product::find($id);
+      $product->reviews = $product->reviews;
+      $product->stores = $product->stores;
       return view("show", [
         "product" => $product
       ]);
+
+      //return response()->json($product);
     }
 
     /**
@@ -78,7 +80,11 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view("edit", [
+          "product" => $product
+        ]);
+        //return View::make("edit")->with('product',$product);
     }
 
     /**
@@ -90,9 +96,16 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $product = Product::find($id);
+        $product->title = $request->get("title");
+        $product->brand = $request->get("brand");
+        $product->image = $request->get("image");
+        $product->description = $request->get("description");
+        $product->price = $request->get("price");
+        $product->save();
 
+        return redirect()->action('ProductsController@index')->with('status', 'Produkten är sparad!');
+    }
     /**
      * Remove the specified resource from storage.
      *

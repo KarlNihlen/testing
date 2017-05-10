@@ -24,14 +24,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">My awesome products webb app!</a>
+      <a class="navbar-brand" href="/">Startsida</a>
+
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/products">Start</a></li>
         <li><a href="/products/create">Lägg till produkt</a></li>
+        <li>
+          <a href="/products">Alla produkter</a>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

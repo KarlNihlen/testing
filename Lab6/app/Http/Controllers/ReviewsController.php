@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use App\Review;
 
 class ReviewsController extends Controller
 {
@@ -13,7 +15,9 @@ class ReviewsController extends Controller
      */
     public function index()
     {
-        //
+      $reviews = Review::all();
+      //json_decode($reviews);
+      return response()->json($reviews);
     }
 
     /**
@@ -34,7 +38,7 @@ class ReviewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -45,7 +49,10 @@ class ReviewsController extends Controller
      */
     public function show($id)
     {
-        //
+      $review = Review::find($id);
+      $review->product = $review->product;
+      json_decode($review);
+      return response()->json($review);
     }
 
     /**
