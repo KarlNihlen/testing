@@ -13,11 +13,21 @@
 </p>
 
 <p>
-  Finns i {{ $product->stores }}
+  Finns i dom här butikerna: <br />
+  @foreach($product->stores as $store)
+      {{ $store->name }}, {{ $store->city }}
+      <br />
+  @endforeach
+
 </p>
 
 <p>
-  {{ $product->reviews }}
+  Kommentarer från användare: <br />
+  @foreach($product->reviews as $review)
+    Name: {{ $review->name }} <br /> Kommentar: {{ $review->comment }} <br /> Betyg: {{ $review->grade }}<br />
+    ____________________________________________________________________________
+    <br />
+  @endforeach
 </p>
 
 

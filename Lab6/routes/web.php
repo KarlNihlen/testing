@@ -1,5 +1,5 @@
 <?php
-
+use App\Product;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('start');
+    $products = Product::all();
+    $product = $products[count($products) -1];
+    return view('start', [
+      'product' => $product
+    ]);
 });
 
 

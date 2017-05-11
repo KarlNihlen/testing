@@ -15,8 +15,8 @@ class StoresController extends Controller
      */
     public function index()
     {
-        $stores = Store::all();
-        return response()->json_decode($stores);
+        //$stores = Store::all();
+        //return response()->json_decode($stores);
     }
 
     /**
@@ -48,10 +48,10 @@ class StoresController extends Controller
      */
     public function show($id)
     {
-        $store = Store::find($id);
-        $store->name = $store->name;
-        $store->city = $store->city;
-        return response()->json_decode($store);
+        //$store = Store::find($id);
+        //$store->name = $store->name;
+        //$store->city = $store->city;
+        //return response()->json_decode($store);
     }
 
     /**

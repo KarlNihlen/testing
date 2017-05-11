@@ -84,7 +84,6 @@ class ProductsController extends Controller
         return view("edit", [
           "product" => $product
         ]);
-        //return View::make("edit")->with('product',$product);
     }
 
     /**

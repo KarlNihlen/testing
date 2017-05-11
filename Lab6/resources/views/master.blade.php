@@ -33,6 +33,17 @@
       <ul class="nav navbar-nav">
         <li><a href="/products/create">Lägg till produkt</a></li>
         <li>
+          @if (Route::has('login'))
+                  @if (Auth::check())
+                      <a href="{{ url('/home') }}">Min Profil</a>
+                      
+                  @else
+                      <a href="{{ url('/login') }}">Login</a>
+                      <a href="{{ url('/register') }}">Register</a>
+                  @endif
+          @endif
+        </li>
+        <li>
           <a href="/products">Alla produkter</a>
         </li>
       </ul>

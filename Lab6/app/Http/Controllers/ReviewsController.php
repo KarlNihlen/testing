@@ -15,9 +15,9 @@ class ReviewsController extends Controller
      */
     public function index()
     {
-      $reviews = Review::all();
+      //$reviews = Review::all();
       //json_decode($reviews);
-      return response()->json($reviews);
+      //return response()->json($reviews);
     }
 
     /**
@@ -49,10 +49,10 @@ class ReviewsController extends Controller
      */
     public function show($id)
     {
-      $review = Review::find($id);
-      $review->product = $review->product;
-      json_decode($review);
-      return response()->json($review);
+    //  $review = Review::find($id);
+      //$review->product = $review->product;
+      //json_decode($review);
+      //return response()->json($review);
     }
 
     /**
