@@ -97,9 +97,11 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
+        $stores = Store::all();
         $product = Product::find($id);
         return view("edit", [
-          "product" => $product
+          "product" => $product,
+          "stores" => $stores,
         ]);
     }
 
@@ -118,8 +120,22 @@ class ProductsController extends Controller
         $product->image = $request->get("image");
         $product->description = $request->get("description");
         $product->price = $request->get("price");
+
         $product->save();
 
+        $product_id = $product->id;//DB::connection()->getPdo()->lastInsertId();
+
+        foreach ($request->get("stores") as $store) {
+          DB::table('product_store')->truncate();
+
+
+        }
+        foreach ($request->get("stores") as $store) {
+        DB::table('product_store')->insert([
+          "product_id" => $product_id,
+          "store_id" => $store,
+        ]);
+      }
         return redirect()->action('ProductsController@index')->with('status', 'Produkten är sparad!');
     }
     /**
