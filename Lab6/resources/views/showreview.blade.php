@@ -8,4 +8,8 @@
   Comment: {{ $review->comment }}
 </p>
 
+<p>
+  This comment belongs to this product: {{ $product_title }}
+</p>
+
 @endsection

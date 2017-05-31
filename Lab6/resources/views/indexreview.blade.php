@@ -8,8 +8,11 @@
 <p>Här är en lista på reviews:</p>
 <ul>
   @foreach ($reviews as $review)
+    @foreach ($products as $product)
+      @if($product->id == $review->product_id)
 
-  <li style="clear:both;"><a href="reviews/{{ $review->id }}">{{ $review->name }}</a> ({{ $review->comment }})
+
+  <li style="clear:both;"><a href="reviews/{{ $review->id }}">{{ $review->name }}, {{ $product->title }}</a>
     <form action="reviews/{{ $review->id }}" method="post" style="float:right">
       {{ method_field('DELETE') }}
       {{ csrf_field() }}
@@ -25,6 +28,9 @@
         @endif
     </form>
   </li>
+
+      @endif
+    @endforeach
   @endforeach
 </ul>
 
