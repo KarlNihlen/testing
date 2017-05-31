@@ -25,6 +25,16 @@
     <label for="image">Link to image</label>
     <input type="text" class="form-control" id="image" name="image" placeholder="länka bild här...">
   </div>
+  <div class="form-group">
+    <label for="store">Vilka butiker finns produkten i?</label>
+    <br />
+    @foreach($stores as $store)
+        <div class="checkbox">
+          <label><input type="checkbox" name="stores[]" value={{ $store->id }}>{{ $store->name }}</label>
+        </div>
+    @endforeach
+  </div>
+
   <input type="submit" value="Spara produkt" class="btn btn-success">
 </form>
 

@@ -8,6 +8,10 @@ use App\Store;
 
 class StoresController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth', ['except' =>['index', 'show']]);
+  }
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +19,10 @@ class StoresController extends Controller
      */
     public function index()
     {
-        //$stores = Store::all();
-        //return response()->json_decode($stores);
+        $stores = Store::all();
+        return view("indexstore", [
+          "stores" => $stores,
+        ]);
     }
 
     /**
@@ -26,7 +32,7 @@ class StoresController extends Controller
      */
     public function create()
     {
-        //
+        return view("createstore");
     }
 
     /**
@@ -37,7 +43,13 @@ class StoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $store = new Store;
+      $store->name = $request->get("name");
+      $store->city = $request->get("city");
+      $store->save();
+
+      return redirect()->action('StoresController@index')->with('status', 'Storen är sparad!');
+
     }
 
     /**
@@ -48,10 +60,11 @@ class StoresController extends Controller
      */
     public function show($id)
     {
-        //$store = Store::find($id);
-        //$store->name = $store->name;
-        //$store->city = $store->city;
-        //return response()->json_decode($store);
+      $store = Store::find($id);
+
+      return view("showstore", [
+        "store" => $store
+      ]);
     }
 
     /**
@@ -62,7 +75,10 @@ class StoresController extends Controller
      */
     public function edit($id)
     {
-        //
+      $store = Store::find($id);
+      return view("editstore", [
+        "store" => $store
+      ]);
     }
 
     /**
@@ -74,7 +90,13 @@ class StoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $store = Store::find($id);
+      $store->name = $request->get("name");
+      $store->city = $request->get("city");
+
+      $store->save();
+
+      return redirect()->action('StoresController@index')->with('status', 'Storen är sparad!');
     }
 
     /**
@@ -85,6 +107,7 @@ class StoresController extends Controller
      */
     public function destroy($id)
     {
-        //
+      Store::destroy($id);
+      return redirect()->action('StoresController@index')->with('status', 'Storen är raderad xD!');
     }
 }

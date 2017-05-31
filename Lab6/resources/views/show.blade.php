@@ -30,5 +30,7 @@
   @endforeach
 </p>
 
+<a href="/reviews/create?product_id={{ $product->id }}" class="btn btn-danger" style="float:right">Add new review</a>
+
 
 @endsection

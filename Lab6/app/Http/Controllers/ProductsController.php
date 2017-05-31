@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Product;
+use App\Store;
 
 class ProductsController extends Controller
 {
@@ -33,7 +35,10 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view("create");
+        $stores = Store::all();
+        return view("create", [
+          "stores" => $stores,
+        ]);
     }
 
     /**
@@ -51,7 +56,19 @@ class ProductsController extends Controller
       $product->description = $request->get("description");
       $product->price = $request->get("price");
       $product->save();
+
+      $product_id = DB::connection()->getPdo()->lastInsertId();
+
+      foreach ($request->get("stores") as $store) {
+        DB::table('product_store')->insert([
+          "product_id" => $product_id,
+          "store_id" => $store,
+
+        ]);
+      }
+
       return redirect()->action('ProductsController@index')->with('status', 'Produkten är sparad!');
+
     }
 
     /**
